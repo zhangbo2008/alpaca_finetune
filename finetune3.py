@@ -192,7 +192,8 @@ device_map=device_map,
             tokenizer, pad_to_multiple_of=8, return_tensors="pt", padding=True
         ),
     )
-
+    print('保存模型之前进行测试')
+    t()
     torch.save(model,'trymodelsaveall.pth')
     print('整体模型保存完毕.')
     model.config.use_cache = False
@@ -215,6 +216,7 @@ device_map=device_map,
     from peft.tuners import LoraModel, PrefixEncoder, PromptEmbedding, PromptEncoder
     import peft.peft_model as peft_model
     model=peft_model.PeftModel.from_pretrained(output_dir)
+    print('重新加载模型之后测试')
     t()
 
 
