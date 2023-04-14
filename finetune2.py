@@ -86,6 +86,8 @@ device_map=device_map,
     )
 
     print('加载好了初始模型')
+    print('int8模型的测试:')
+    t()
 
 
 
@@ -147,6 +149,7 @@ device_map=device_map,
 
 #=============2023-04-14,15点25
     #训练之前进行测试.
+    print('peft模型的测试')
     if 1:
       def t():
         instruction = "Give three tips for staying healthy."
