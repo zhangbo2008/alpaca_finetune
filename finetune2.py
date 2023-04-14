@@ -77,7 +77,7 @@ def train(
     from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
     quantization_config = BitsAndBytesConfig(llm_int8_enable_fp32_cpu_offload=True)
-    model = LlamaForCausalLM.from_pretrained(#=========这个8bit只能gpu用.cpu的话不行.
+    model = LlamaForCausalLM.from_pretrained(
         '/alpaca_model', #https://huggingface.co/chainyo/alpaca-lora-7b/tree/main 把这个文件夹都放到/alpaca_model文件夹里面.
         load_in_8bit=True,
         torch_dtype=torch.float16
