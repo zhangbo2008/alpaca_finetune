@@ -27,12 +27,12 @@ def train(
     data_path: str = "./alpaca_data_cleaned_test.json",
     output_dir: str = "./lora-alpaca",
     # training hyperparams
-    batch_size: int = 128,
-    micro_batch_size: int = 4,
+    batch_size: int = 128,  #每次128个才进行bp算法.
+    micro_batch_size: int = 4,  #每次并行训练数量.
     num_epochs: int = 3,
     learning_rate: float = 3e-4,
     cutoff_len: int = 512,
-    val_set_size: int = 2000,
+    val_set_size: int = 2,
     # lora hyperparams
     lora_r: int = 8,
     lora_alpha: int = 16,
@@ -81,8 +81,7 @@ def train(
         '/alpaca_model', #https://huggingface.co/chainyo/alpaca-lora-7b/tree/main 把这个文件夹都放到/alpaca_model文件夹里面.
         load_in_8bit=True,
         torch_dtype=torch.float16,
-device_map=device_map,
-        
+device_map=device_map,        
     )
 
     print('加载好了初始模型')
@@ -94,7 +93,7 @@ device_map=device_map,
     tokenizer.pad_token_id = 0  # unk. we want this to be different from the eos token
     tokenizer.padding_side = "left"  # Allow batched inference
 
-    def tokenize(prompt, add_eos_token=True):
+    def tokenize(prompt, add_eos_token=True):#把prompt进行编码.
         # there's probably a way to do this with the tokenizer settings
         # but again, gotta move fast
         result = tokenizer(
