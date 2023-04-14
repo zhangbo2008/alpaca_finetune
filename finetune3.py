@@ -46,6 +46,30 @@ def train(
     train_on_inputs: bool = True,  # if False, masks out inputs in loss#其实一般要开true.
     group_by_length: bool = True,  # faster, but produces an odd training loss curve
 ):
+    
+    def t():
+        instruction = "Give three tips for staying healthy."
+        input_ctxt = None  # For some tasks, you can provide an input context to help the model generate a better response.
+        generation_config = GenerationConfig(
+            temperature=0.2,
+            top_p=0.75,
+            top_k=40,
+            num_beams=4,
+            max_new_tokens=128,
+        )
+        prompt = generate_prompt2(instruction, input_ctxt)
+        input_ids = tokenizer(prompt, return_tensors="pt").input_ids
+        input_ids = input_ids.to(model.device)
+        with torch.no_grad():
+            outputs = model.generate(
+                input_ids=input_ids,
+                generation_config=generation_config,
+                return_dict_in_generate=True,
+                output_scores=True,
+            )
+
+        response = tokenizer.decode(outputs.sequences[0], skip_special_tokens=True)
+        print(response)
     print(
         f"Training Alpaca-LoRA model with params:\n"
         f"base_model: {base_model}\n"
@@ -264,28 +288,5 @@ def generate_prompt2(instruction: str, input_ctxt: str = None) -> str:
 
 
 
-def t():
-        instruction = "Give three tips for staying healthy."
-        input_ctxt = None  # For some tasks, you can provide an input context to help the model generate a better response.
-        generation_config = GenerationConfig(
-            temperature=0.2,
-            top_p=0.75,
-            top_k=40,
-            num_beams=4,
-            max_new_tokens=128,
-        )
-        prompt = generate_prompt2(instruction, input_ctxt)
-        input_ids = tokenizer(prompt, return_tensors="pt").input_ids
-        input_ids = input_ids.to(model.device)
-        with torch.no_grad():
-            outputs = model.generate(
-                input_ids=input_ids,
-                generation_config=generation_config,
-                return_dict_in_generate=True,
-                output_scores=True,
-            )
-
-        response = tokenizer.decode(outputs.sequences[0], skip_special_tokens=True)
-        print(response)
 if __name__ == "__main__":
     fire.Fire(train)##    
