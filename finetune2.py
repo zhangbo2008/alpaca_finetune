@@ -80,8 +80,8 @@ def train(
     model = LlamaForCausalLM.from_pretrained(
         '/alpaca_model', #https://huggingface.co/chainyo/alpaca-lora-7b/tree/main 把这个文件夹都放到/alpaca_model文件夹里面.
         load_in_8bit=True,
-        torch_dtype=torch.float16
-        device_map=device_map,
+        torch_dtype=torch.float16,
+device_map=device_map,
         
     )
 
