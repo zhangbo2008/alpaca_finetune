@@ -158,7 +158,7 @@ device_map=device_map,
             num_beams=4,
             max_new_tokens=128,
         )
-        prompt = generate_prompt(instruction, input_ctxt)
+        prompt = generate_prompt2(instruction, input_ctxt)
         input_ids = tokenizer(prompt, return_tensors="pt").input_ids
         input_ids = input_ids.to(model.device)
         with torch.no_grad():
@@ -256,5 +256,23 @@ def generate_prompt(data_point):
 {data_point["output"]}"""
 
 
+def generate_prompt2(instruction: str, input_ctxt: str = None) -> str:
+    if input_ctxt:
+        return f"""Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
+
+### Instruction:
+{instruction}
+
+### Input:
+{input_ctxt}
+
+### Response:"""
+    else:
+        return f"""Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
+### Instruction:
+{instruction}
+
+### Response:"""
 if __name__ == "__main__":
     fire.Fire(train)##    
