@@ -218,8 +218,7 @@ device_map=device_map,
     )
     print('保存模型之前进行测试')
     t()
-    torch.save(model,'trymodelsaveall.pth')
-    print('整体模型保存完毕.')
+#============这部分代码有用.
     model.config.use_cache = False
 
     old_state_dict = model.state_dict
@@ -231,6 +230,11 @@ device_map=device_map,
         model = torch.compile(model)
 
     trainer.train()
+    torch.save(model,'trymodelsaveall.pth')
+    print('整体模型保存完毕.')
+
+
+
 
     model.save_pretrained(output_dir)
 

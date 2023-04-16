@@ -1,5 +1,5 @@
 # peft模型是一种新的finetune方法. 可以降低训练参数数量,并尽量保持finetune效果.
-
+#===========这个脚本是prompt_tunning的finetune方法.可以借鉴. 另外一种方法是lora.两种都是低成本训练的好方法.
 from transformers import AutoModelForSeq2SeqLM
 from peft import get_peft_config, get_peft_model, get_peft_model_state_dict, PrefixTuningConfig, TaskType
 import torch
@@ -33,7 +33,7 @@ peft_config = PrefixTuningConfig(task_type=TaskType.SEQ_2_SEQ_LM, inference_mode
 model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path)
 model = get_peft_model(model, peft_config)
 model.print_trainable_parameters()
-
+print('=================================================')
 
 
 
