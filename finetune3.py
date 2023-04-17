@@ -30,7 +30,7 @@ def train(
     # training hyperparams
     batch_size: int = 128,  #每次128个才进行bp算法.
     micro_batch_size: int = 4,  #每次并行训练数量.
-    num_epochs: int = 3,
+    num_epochs: int = 10,
     learning_rate: float = 3e-4,
     cutoff_len: int = 512,
     val_set_size: int = 0,
