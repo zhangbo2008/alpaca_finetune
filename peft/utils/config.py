@@ -109,7 +109,7 @@ class PeftConfigMixin(PushToHubMixin):
                 setattr(config, key, value)
 
         return config
-
+#读取文件得到一个json
     @classmethod
     def from_json_file(cls, path_json_file, **kwargs):
         r"""

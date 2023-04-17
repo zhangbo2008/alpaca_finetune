@@ -228,9 +228,9 @@ device_map=device_map,
 
     if torch.__version__ >= "2" and sys.platform != "win32":
         model = torch.compile(model)
-
+    print('开始训练')
     trainer.train()
-    torch.save(model,'trymodelsaveall.pth')
+    # torch.save(model,'trymodelsaveall.pth')
     print('整体模型保存完毕.')
 
 
