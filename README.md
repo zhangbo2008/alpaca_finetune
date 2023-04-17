@@ -2,6 +2,9 @@ finetune3.py    infer.py 是最新代码.
 
 https://huggingface.co/chainyo/alpaca-lora-7b/tree/main 下载到'/alpaca_model' 这个路径下.
 
+先运行finetune3.py 训练, 里面也会进行训完的测试.
+infer.py是推理代码使用的是刚讯号的模型.
+
 
 
 
