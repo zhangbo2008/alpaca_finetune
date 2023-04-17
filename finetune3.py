@@ -46,7 +46,7 @@ def train(
     train_on_inputs: bool = True,  # if False, masks out inputs in loss#其实一般要开true.
     group_by_length: bool = True,  # faster, but produces an odd training loss curve
 ):
-    
+    mydata='/alpaca_model'
     def t():
         instruction = "Give three tips for staying healthy."
         input_ctxt = None  # For some tasks, you can provide an input context to help the model generate a better response.
@@ -103,7 +103,7 @@ def train(
 
     quantization_config = BitsAndBytesConfig(llm_int8_enable_fp32_cpu_offload=True)
     model = LlamaForCausalLM.from_pretrained(
-        '/alpaca_model', #https://huggingface.co/chainyo/alpaca-lora-7b/tree/main 把这个文件夹都放到/alpaca_model文件夹里面.
+       mydata, #https://huggingface.co/chainyo/alpaca-lora-7b/tree/main 把这个文件夹都放到/alpaca_model文件夹里面.
         load_in_8bit=True,
         torch_dtype=torch.float16,
 device_map=device_map,        
@@ -243,7 +243,7 @@ device_map=device_map,
     print('重新加载模型.')
     from peft.tuners import LoraModel, PrefixEncoder, PromptEmbedding, PromptEncoder
     import peft.peft_model as peft_model
-    model=peft_model.PeftModel.from_pretrained(output_dir)
+    model=peft_model.PeftModel.from_pretrained(output_dir,mydata)
     print('重新加载模型之后测试')
     t()
 
