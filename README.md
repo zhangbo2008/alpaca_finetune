@@ -1,6 +1,6 @@
 finetune3.py    infer.py 是最新代码.
 
-
+https://huggingface.co/chainyo/alpaca-lora-7b/tree/main 下载到'/alpaca_model' 这个路径下.
 
 
 

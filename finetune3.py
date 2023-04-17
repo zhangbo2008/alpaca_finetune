@@ -114,8 +114,8 @@ device_map=device_map,
     )
 
     print('加载好了初始模型')
-    print('int8模型的测试:')
-    t()
+    # print('int8模型的测试:')
+    # t()
 
 
 
