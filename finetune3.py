@@ -239,7 +239,7 @@ device_map=device_map,
     print('训练完开始测试')
     model.eval()
     t()
-
+    
 
     # torch.save(model,'trymodelsaveall.pth')
 
