@@ -73,7 +73,7 @@ def train(
 
 
 
-        
+
     print(
         f"Training Alpaca-LoRA model with params:\n"
         f"base_model: {base_model}\n"
@@ -201,7 +201,7 @@ device_map=device_map,
         args=transformers.TrainingArguments(
             per_device_train_batch_size=micro_batch_size,
             gradient_accumulation_steps=gradient_accumulation_steps,
-            warmup_steps=100,
+            warmup_steps=1,
             num_train_epochs=num_epochs,
             learning_rate=learning_rate,
             fp16=True,
