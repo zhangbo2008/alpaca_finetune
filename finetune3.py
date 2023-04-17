@@ -231,6 +231,7 @@ device_map=device_map,
     print('开始训练')
     trainer.train()
     print('训练完开始测试')
+    model.eval()
     t()
 
 
