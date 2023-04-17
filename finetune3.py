@@ -219,15 +219,16 @@ device_map=device_map,
     print('保存模型之前进行测试')
     t()
 #============这部分代码有用.
-    model.config.use_cache = False
+    if 0:
+        model.config.use_cache = False
 
-    old_state_dict = model.state_dict
-    model.state_dict = (
-        lambda self, *_, **__: get_peft_model_state_dict(self, old_state_dict())
-    ).__get__(model, type(model))
+        old_state_dict = model.state_dict
+        model.state_dict = (
+            lambda self, *_, **__: get_peft_model_state_dict(self, old_state_dict())
+        ).__get__(model, type(model))
 
-    if torch.__version__ >= "2" and sys.platform != "win32":
-        model = torch.compile(model)
+        if torch.__version__ >= "2" and sys.platform != "win32":
+            model = torch.compile(model)
     print('开始训练')
     model.train()
     trainer.train()
@@ -237,13 +238,13 @@ device_map=device_map,
 
 
     # torch.save(model,'trymodelsaveall.pth')
-    print('整体模型保存完毕.')
+
 
 
 
 
     model.save_pretrained(output_dir)
-
+    print('整体模型保存完毕.')
     print("\n If there's a warning about missing keys above, please disregard :)")
 
     # print('重新加载模型.')

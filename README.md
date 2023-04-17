@@ -1,3 +1,12 @@
+finetune3.py    infer.py 是最新代码.
+
+
+
+
+
+
+
+
 ## 🦙🌲🤏 Alpaca-LoRA: Low-Rank LLaMA Instruct-Tuning
 
 - 🤗 **Try the pretrained model out [here](https://huggingface.co/spaces/tloen/alpaca-lora), courtesy of a GPU grant from Huggingface!**
