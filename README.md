@@ -5,6 +5,8 @@ https://huggingface.co/chainyo/alpaca-lora-7b/tree/main 下载到'/alpaca_model'
 先运行finetune3.py 训练, 里面也会进行训完的测试.
 infer.py是推理代码使用的是刚讯号的模型.
 
+确实可以训练,但是结果不太稳定. 估计是int8的事.
+
 
 
 
