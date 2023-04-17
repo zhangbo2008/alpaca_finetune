@@ -230,6 +230,10 @@ device_map=device_map,
         model = torch.compile(model)
     print('开始训练')
     trainer.train()
+    print('训练完开始测试')
+    t()
+
+
     # torch.save(model,'trymodelsaveall.pth')
     print('整体模型保存完毕.')
 
@@ -239,7 +243,7 @@ device_map=device_map,
     model.save_pretrained(output_dir)
 
     print("\n If there's a warning about missing keys above, please disregard :)")
-    print('训练完毕开始测试')
+
     print('重新加载模型.')
     from peft.tuners import LoraModel, PrefixEncoder, PromptEmbedding, PromptEncoder
     import peft.peft_model as peft_model
