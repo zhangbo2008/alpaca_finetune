@@ -70,6 +70,10 @@ def train(
 
         response = tokenizer.decode(outputs.sequences[0], skip_special_tokens=True)
         print(response)
+
+
+
+        
     print(
         f"Training Alpaca-LoRA model with params:\n"
         f"base_model: {base_model}\n"
