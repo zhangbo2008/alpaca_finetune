@@ -5,8 +5,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 BASE_MODEL = '/alpaca_model'
 LORA_WEIGHTS = "./lora-alpaca"
-tokenizer = AutoTokenizer.from_pretrained("chainyo/alpaca-lora-7b")
-model = AutoModelForCausalLM.from_pretrained(
+tokenizer = LlamaTokenizer.from_pretrained("chainyo/alpaca-lora-7b")
+model = LlamaForCausalLM.from_pretrained(
         BASE_MODEL,
         torch_dtype=torch.float16, # 加载半精度
         device_map={"":0}, # 指定GPU 0
