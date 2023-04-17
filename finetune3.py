@@ -229,6 +229,7 @@ device_map=device_map,
     if torch.__version__ >= "2" and sys.platform != "win32":
         model = torch.compile(model)
     print('开始训练')
+    model.train()
     trainer.train()
     print('训练完开始测试')
     model.eval()
