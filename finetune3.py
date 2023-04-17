@@ -246,12 +246,12 @@ device_map=device_map,
 
     print("\n If there's a warning about missing keys above, please disregard :)")
 
-    print('重新加载模型.')
-    from peft.tuners import LoraModel, PrefixEncoder, PromptEmbedding, PromptEncoder
-    import peft.peft_model as peft_model
-    model=peft_model.PeftModel.from_pretrained(output_dir,mydata)
-    print('重新加载模型之后测试')
-    t()
+    # print('重新加载模型.')
+    # from peft.tuners import LoraModel, PrefixEncoder, PromptEmbedding, PromptEncoder
+    # import peft.peft_model as peft_model
+    # model=peft_model.PeftModel.from_pretrained(output_dir,mydata)
+    # print('重新加载模型之后测试')
+    # t()
 
 
 def generate_prompt(data_point):
