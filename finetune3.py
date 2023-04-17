@@ -173,7 +173,8 @@ device_map=device_map,
     )
     model = get_peft_model(model, config)
 
-
+#===========转化模型
+    
 
 #=============2023-04-14,15点25
     #训练之前进行测试.
@@ -206,7 +207,8 @@ device_map=device_map,
             learning_rate=learning_rate,
             fp16=True,
             logging_steps=10,
-            evaluation_strategy="steps" if val_set_size > 0 else "no",
+            # evaluation_strategy="steps" if val_set_size > 0 else "no",
+            evaluation_strategy="no" ,
             save_strategy="steps",
             eval_steps=200 if val_set_size > 0 else None,
             save_steps=200,
@@ -222,8 +224,8 @@ device_map=device_map,
     )
     print('保存模型之前进行测试')
     t()
-#============这部分代码有用.
-    if 0:
+#============这部分代码有用.但是做了什么??????????????????????
+    if 1:
         model.config.use_cache = False
 
         old_state_dict = model.state_dict
