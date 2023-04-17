@@ -69,7 +69,9 @@ def train(
             )
 
         response = tokenizer.decode(outputs.sequences[0], skip_special_tokens=True)
+        print('开始生成')
         print(response)
+        print('答案生成完毕')
 
 
 
